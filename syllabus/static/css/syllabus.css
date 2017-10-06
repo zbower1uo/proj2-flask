@@ -30,10 +30,21 @@ tr.even {
     background-color: rgb(224,213,179);
 }
 
+/*highlighted table row for current week */
+tr.highlighted{
+    background-color: rgb(255,255,0);
+}
+
 .class-schedule .week {
     
     font-weight: bolder;
     font-size: 150%; 
+    text-align: center; 
+}
+
+.class-schedule .date{
+    font-weight: bold;
+    font-size: 100%;
     text-align: center; 
 }
 

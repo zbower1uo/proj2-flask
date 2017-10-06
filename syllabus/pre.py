@@ -41,7 +41,6 @@ def process(raw):
         if field == "begin":
             try:
                 base = arrow.get(content, "MM/DD/YYYY")
-                # print("Base date {}".format(base.isoformat()))
             except:
                 raise ValueError("Unable to parse date {}".format(content))
 
@@ -52,6 +51,13 @@ def process(raw):
             entry['topic'] = ""
             entry['project'] = ""
             entry['week'] = content
+            #compare_date needed to compare dates and extract the current week
+            #take the entry from week and use it to increment the date
+            compare_date = base.shift(weeks=+(int(entry['week'])-1))
+            entry['date'] = compare_date
+
+            if compare_date <= arrow.now() and compare_date.shift(weeks=+1) > arrow.now():
+                entry['current_week'] = True          
 
         elif field == 'topic' or field == 'project':
             entry[field] = content

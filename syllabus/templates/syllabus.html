@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<h1>Schedule</h1>
+<h1>Schedule1111111111111111111</h1>
 
 <table class="class-schedule">
   {% for entry in g.schedule %}
@@ -17,7 +17,11 @@
   <tr class="even">
   {% else %}
   <tr class="odd">
-  {% endif %}	   
+  {% endif %}
+  {% if entry.current_week%}
+  <tr class ="highlighted">
+  {%endif%}	   
+    <td class="date">{{entry.date |fmtdate }}</td>
     <td class="week">{{ entry.week }}</td>
     <td class="topic">{{ entry.topic }}</td>
     <td class="project">{{ entry.project}}</td>
